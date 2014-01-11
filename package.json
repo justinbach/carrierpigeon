@@ -1,12 +1,12 @@
 {
-  "name": "mean",
-  "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
-  "version": "0.1.2",
-  "private": false,
-  "author": "Amos Haviv",
+  "name": "CarrierPigeon",
+  "description": "Correspondence inspired by the slow web movement",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Insanely Awesome",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linnovate/mean.git"
+    "url": "https://github.com/justinbach/carrierpigeon.git"
   },
   "engines": {
     "node": "0.10.x",
