@@ -1,0 +1,11 @@
+<section data-ng-controller="PigeonsController" data-ng-init="find()">
+    <h1 data-ng-show="pigeons">All Pigeons</h1>
+	<ul class="pigeons unstyled">
+		<li data-ng-repeat="pigeon in pigeons">
+			<span><a data-ng-href="/#!/pigeons/{{pigeon._id}}">{{pigeon.created | date:'medium'}}</a></span> /
+			<span>{{pigeon.user.name}}</span>
+			<div>{{pigeon.message}}</div>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!pigeons || pigeons.length">No pigeons yet. <br> Why don't you <a href="/#!/pigeons/create">Create One</a>?</h1>
+</section>

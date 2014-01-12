@@ -1,0 +1,15 @@
+<section data-ng-controller="PigeonsController" data-ng-init="findOne()">
+    <h1>View Pigeon</h1>
+    <span>{{pigeon.created | date:'medium'}}</span>/
+    <span>{{pigeon.user.name}}</span>
+    <h2>{{pigeon.title}}</h2>
+    <div data-ng-show="global.user._id == pigeon.user._id">
+        <a class="btn" href="/#!/pigeons/{{pigeon._id}}/edit">
+        	<i class="icon-edit"></i>
+        </a> 
+        <a class="btn" data-ng-click="remove();">
+            <i class="icon-trash"></i>
+        </a>
+    </div>
+    <div>{{pigeon.message}}</div>
+</section>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles']);
+angular.module('carrierpigeon', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'carrierpigeon.system', 'carrierpigeon.pigeons']);
 
-angular.module('mean.system', []);
-angular.module('mean.articles', []);
+angular.module('carrierpigeon.system', []);
+angular.module('carrierpigeon.pigeons', []);

@@ -1,0 +1,18 @@
+<section data-ng-controller="PigeonsController" data-ng-init="findOne()">
+    <h1>Edit Pigeon</h1>
+	<form class="form-horizontal" data-ng-submit="update()">
+		<div class="control-group">
+			<label class="control-label" for="message">Message</label>
+
+			<div class="controls">
+				<textarea data-ng-model="pigeon.message" id="message" cols="30" rows="10" placeholder="Message">
+				</textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" class="btn">
+			</div>
+		</div>
+	</form>
+</section>

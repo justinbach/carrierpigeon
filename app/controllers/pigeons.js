@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Article = mongoose.model('Pigeon'),
+    Pigeon = mongoose.model('Pigeon'),
     _ = require('lodash');
 
 
@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
  * Find pigeon by id
  */
 exports.pigeon = function(req, res, next, id) {
-    Article.load(id, function(err, pigeon) {
+    Pigeon.load(id, function(err, pigeon) {
         if (err) return next(err);
         if (!pigeon) return next(new Error('Failed to load pigeon ' + id));
         req.pigeon = pigeon;
@@ -34,7 +34,7 @@ exports.create = function(req, res) {
                 pigeon: pigeon
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(pigeon);
         }
     });
 };
@@ -72,7 +72,7 @@ exports.destroy = function(req, res) {
                 pigeon: pigeon
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(pigeon);
         }
     });
 };
@@ -88,7 +88,7 @@ exports.show = function(req, res) {
  * List of pigeons
  */
 exports.all = function(req, res) {
-    Pigeon.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+    Pigeon.find().sort('-created').populate('user', 'name username').exec(function(err, pigeons) {
         if (err) {
             res.render('error', {
                 status: 500
