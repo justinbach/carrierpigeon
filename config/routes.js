@@ -20,16 +20,16 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the userId param
     app.param('userId', users.user);
 
-    //Article Routes
-    var articles = require('../app/controllers/articles');
-    app.get('/articles', articles.all);
-    app.post('/articles', auth.requiresLogin, articles.create);
-    app.get('/articles/:articleId', articles.show);
-    app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
-    app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
+    //Pigeon Routes
+    var pigeons = require('../app/controllers/pigeons');
+    app.get('/pigeons', pigeons.all);
+    app.post('/pigeons', auth.requiresLogin, pigeons.create);
+    app.get('/pigeons/:pigeonId', pigeons.show);
+    app.put('/pigeons/:pigeonId', auth.requiresLogin, auth.pigeon.hasAuthorization, pigeons.update);
+    app.del('/pigeons/:pigeonId', auth.requiresLogin, auth.pigeon.hasAuthorization, pigeons.destroy);
 
-    //Finish with setting up the articleId param
-    app.param('articleId', articles.article);
+    //Finish with setting up the pigeonId param
+    app.param('pigeonId', pigeons.pigeon);
 
     //Home route
     var index = require('../app/controllers/index');

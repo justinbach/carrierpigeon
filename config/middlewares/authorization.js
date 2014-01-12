@@ -23,11 +23,11 @@ exports.user = {
 };
 
 /**
- * Article authorizations routing middleware
+ * Pigeon authorizations routing middleware
  */
-exports.article = {
+exports.pigeon = {
     hasAuthorization: function(req, res, next) {
-        if (req.article.user.id != req.user.id) {
+        if (req.pigeon.user.id != req.user.id) {
             return res.send(401, 'User is not authorized');
         }
         next();

@@ -4,34 +4,34 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Article = mongoose.model('Article'),
+    Article = mongoose.model('Pigeon'),
     _ = require('lodash');
 
 
 /**
- * Find article by id
+ * Find pigeon by id
  */
-exports.article = function(req, res, next, id) {
-    Article.load(id, function(err, article) {
+exports.pigeon = function(req, res, next, id) {
+    Article.load(id, function(err, pigeon) {
         if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
+        if (!pigeon) return next(new Error('Failed to load pigeon ' + id));
+        req.pigeon = pigeon;
         next();
     });
 };
 
 /**
- * Create a article
+ * Create a pigeon
  */
 exports.create = function(req, res) {
-    var article = new Article(req.body);
-    article.user = req.user;
+    var pigeon = new Pigeon(req.body);
+    pigeon.user = req.user;
 
-    article.save(function(err) {
+    pigeon.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                pigeon: pigeon
             });
         } else {
             res.jsonp(article);
@@ -40,36 +40,36 @@ exports.create = function(req, res) {
 };
 
 /**
- * Update a article
+ * Update a pigeon
  */
 exports.update = function(req, res) {
-    var article = req.article;
+    var pigeon = req.pigeon;
 
-    article = _.extend(article, req.body);
+    pigeon = _.extend(pigeon, req.body);
 
-    article.save(function(err) {
+    pigeon.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                pigeon: pigeon
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(pigeon);
         }
     });
 };
 
 /**
- * Delete an article
+ * Delete a pigeon - probably should remove this
  */
 exports.destroy = function(req, res) {
-    var article = req.article;
+    var pigeon = req.pigeon;
 
-    article.remove(function(err) {
+    pigeon.remove(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                pigeon: pigeon
             });
         } else {
             res.jsonp(article);
@@ -78,23 +78,23 @@ exports.destroy = function(req, res) {
 };
 
 /**
- * Show an article
+ * Show a pigeon
  */
 exports.show = function(req, res) {
-    res.jsonp(req.article);
+    res.jsonp(req.pigeon);
 };
 
 /**
- * List of Articles
+ * List of pigeons
  */
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+    Pigeon.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(articles);
+            res.jsonp(pigeons);
         }
     });
 };
